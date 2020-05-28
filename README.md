@@ -1,4 +1,4 @@
-# 🔆✈️Coronavirus Statistics and Travel Advice Map Project
+# 🔆✈️Coronavirus Statistics and Travel Advice Map Project V 2.0
 
 Due the COVID-19 virus situation, Many countries issue travel advisories about other countries. Tailored to the citizens of the issueing country, they may be a little biased at times.
 To provide a consolidated and more neutral view, CORONA Map Application, using https://travel-advisory.info and https://corona.lmao.ninja/ resources aggregate the travel advisories from many authorities, normalize them and create a comparable scoring.
