@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Asap:wght@400;600&display=swap');
+
+header {
+  font-family: 'Asap', sans-serif;
+  width: 100%;
+  color: $white;
+  background-color: #1a1a1a;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    height: 5vh;
+    line-height: 2.5em;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    display: inline-block;
+  }
+
+  a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 0 .5em;
+  }
+  a:hover{
+    color:rgba(162, 231, 148, 0.616);
+  }
+
+  p {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 0;
+  }
+
+}
+.virusIcon{
+  height: 100%;
+}
