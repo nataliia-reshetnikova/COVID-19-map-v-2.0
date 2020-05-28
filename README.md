@@ -16,7 +16,7 @@ This application, is a map-based application which has two pages, first page(Cas
 * [Leaflet](https://leafletjs.com/)
 * [React Leaflet](https://react-leaflet.js.org)
 
-## 🚀 Getting Started
+## 🚀🚀🚀 Getting Started
 
 ### Requirements
 * [Gatsby CLI](https://www.npmjs.com/package/gatsby-cli)
