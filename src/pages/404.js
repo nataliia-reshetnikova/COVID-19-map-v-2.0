@@ -2,7 +2,7 @@ import React from 'react';
 
 import Layout from 'components/Layout';
 import Container from 'components/Container';
-
+//error page
 const NotFoundPage = () => {
   return (
     <Layout>
