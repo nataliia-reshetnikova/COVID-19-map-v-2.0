@@ -1,19 +1,28 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import Leaflet from 'leaflet';
-import axios from 'axios';
+import { useTracker } from 'hooks';
 import Layout from 'components/Layout';
 import Map from 'components/Map';
-
 
 const LOCATION = {
   lat: 20,
   lng: 30
 };
 const CENTER = [LOCATION.lat, LOCATION.lng];
-const DEFAULT_ZOOM = 3;
+const DEFAULT_ZOOM = 1.5;
 
 const IndexPage = () => {
+
+  const { data: countries = [] } = useTracker({
+    api: 'countries'
+  });
+  
+  const { data: stats = {} } = useTracker({
+    api: 'all'
+  });
+  console.log('stats', stats);
+  const hasCountries = Array.isArray(countries) && countries.length > 0;
 
   /**
    * mapEffect
@@ -22,21 +31,11 @@ const IndexPage = () => {
    */
 
   async function mapEffect({ leafletElement:map } = {}) {
-    if(!map) return;
-    let response;
-    try{
-      response = await axios.get('https://corona.lmao.ninja/v2/countries');
-    }catch (e){
-      console.log('E',e);
-      return;
-    }
-    const {data} = response;
-    const hasData = Array.isArray(data)&&data.length>0;
-    if(!hasData) return;
+   if(!hasCountries) return;
 
     const geoJson={
       type:'FeatureCollection',
-      features:data.map((country={})=>{
+      features:countries.map((country={})=>{
         const{countryInfo={}}=country;
         const{lat, long:lng}=countryInfo;
         return{
@@ -57,14 +56,20 @@ const IndexPage = () => {
       let updatedFromatted;
       let casesString;
       let additionalClass="none";
+      let populationString;
       const{
         country,
+        population,
         updated,
         cases,
         deaths,
-        recovered
+        recovered,
+        casesPerOneMillion
       } = properties
-
+      populationString = `${population}`;
+      if(population>1000000){
+        populationString=`${populationString.slice(0,-6)}M+`
+      }
       casesString=`${cases}`;
       if(cases>1000){
         casesString = `${casesString.slice(0,-3)}k+`
@@ -88,6 +93,9 @@ const IndexPage = () => {
             <li><span>Updated:</span>  <span>${updatedFromatted}</span></li>
             <li><span>Deaths:</span> <span>${deaths}</span></li>
             <li><span>Recovered:</span>  <span>${recovered}</span></li>
+            <hr/>
+            <li><span>Population:</span>  <span>${populationString}</span></li>
+            <li><span>Cases per million:</span>  <span>${casesPerOneMillion}</span></li>
             <hr/>
             <li><span>Death rate:</span>  <span>${deathRate.toFixed(2)}%</span></li>
             <li><span>Recovery rate:</span>  <span>${recoveryRate.toFixed(2)}%</span></li>

@@ -1,6 +1,6 @@
 .map {
   width:100vw;
-  height: 90vh;
+  height: 100vh;
   position: relative;
 
   &,
@@ -77,24 +77,25 @@
 
 }
 //classes of travel score
-.safe{
+.greenScore{
   width: 2.5em;
   height:2.5em;
   background-color:rgba(0, 128, 0, 0.336);
-
 }
-.medium{
+.blueScore{
+  width: 2.7em;
+  height: 2.7em;
+  background-color:rgba(0, 204, 255, 0.301);
+}
+.yellowScore{
   width: 3em;
   height: 3em;
   background-color:rgba(255, 166, 0, 0.301);
-
 }
-.unsafe{
+.redScore{
   width: 4em;
   height: 4em;
-  background-color:rgba(255, 0, 0, 0.295);
-
-  
+  background-color:rgba(255, 0, 0, 0.295);  
 }
 .icon-marker-tooltip {
 
