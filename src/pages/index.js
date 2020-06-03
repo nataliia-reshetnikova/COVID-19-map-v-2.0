@@ -166,7 +166,7 @@ const IndexPage = () => {
   return (
     <Layout pageName="home">
       <Helmet>
-     
+      <title>Cases Stats</title>
       </Helmet>
       <div className="tracker-last-updated">
   <p>
