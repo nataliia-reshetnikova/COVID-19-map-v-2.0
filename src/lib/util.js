@@ -8,6 +8,11 @@ export function isDomAvailable() {
   return typeof window !== 'undefined' && !!window.document && !!window.document.createElement;
 }
 
+/**
+ * commafy
+ * @description Applies appropriate commas to large numbers
+ */
+
 export function commafy(value) {
   let numberString = `${value}`;
 

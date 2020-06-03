@@ -9,7 +9,6 @@ import { commafy, friendlyDate } from 'lib/util';
 
 
 
-
 const LOCATION = {
   lat: 20,
   lng: 30
@@ -19,12 +18,13 @@ const DEFAULT_ZOOM = 1.5;
 
 const IndexPage = () => {
 
+
   const { data: stats = {} } = useTracker({
     api: 'all'
   });
   
   console.log('stats', stats)
-  
+
   const { data: countries = [] } = useTracker({
     api: 'countries'
   });
@@ -64,7 +64,6 @@ const IndexPage = () => {
     }
   ]
 
-
   /**
    * mapEffect
    * @description Fires a callback once the page renders
@@ -72,7 +71,7 @@ const IndexPage = () => {
    */
 
   async function mapEffect({ leafletElement:map } = {}) {
-    if(!hasCountries) return;
+   if(!hasCountries) return;
     
     const geoJson={
       type:'FeatureCollection',
@@ -97,14 +96,20 @@ const IndexPage = () => {
       let updatedFromatted;
       let casesString;
       let additionalClass="none";
+      let populationString;
       const{
         country,
+        population,
         updated,
         cases,
         deaths,
-        recovered
+        recovered,
+        casesPerOneMillion
       } = properties
-
+      populationString = `${population}`;
+      if(population>1000000){
+        populationString=`${populationString.slice(0,-6)}M+`
+      }
       casesString=`${cases}`;
       if(cases>1000){
         casesString = `${casesString.slice(0,-3)}k+`
@@ -128,6 +133,9 @@ const IndexPage = () => {
             <li><span>Updated:</span>  <span>${updatedFromatted}</span></li>
             <li><span>Deaths:</span> <span>${deaths}</span></li>
             <li><span>Recovered:</span>  <span>${recovered}</span></li>
+            <hr/>
+            <li><span>Population:</span>  <span>${populationString}</span></li>
+            <li><span>Cases per million:</span>  <span>${casesPerOneMillion}</span></li>
             <hr/>
             <li><span>Death rate:</span>  <span>${deathRate.toFixed(2)}%</span></li>
             <li><span>Recovery rate:</span>  <span>${recoveryRate.toFixed(2)}%</span></li>
