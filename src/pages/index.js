@@ -1,9 +1,13 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import Leaflet from 'leaflet';
-import axios from 'axios';
+import { useTracker } from 'hooks';
 import Layout from 'components/Layout';
 import Map from 'components/Map';
+import { commafy, friendlyDate } from 'lib/util';
+
+
+
 
 
 const LOCATION = {
@@ -11,9 +15,55 @@ const LOCATION = {
   lng: 30
 };
 const CENTER = [LOCATION.lat, LOCATION.lng];
-const DEFAULT_ZOOM = 3;
+const DEFAULT_ZOOM = 1.5;
 
 const IndexPage = () => {
+
+  const { data: stats = {} } = useTracker({
+    api: 'all'
+  });
+  
+  console.log('stats', stats)
+  
+  const { data: countries = [] } = useTracker({
+    api: 'countries'
+  });
+  
+  const hasCountries = Array.isArray(countries) && countries.length > 0;
+  
+  const dashboardStats = [
+    {
+      primary: {
+        label: 'Total Cases',
+        value: stats ? commafy(stats?.cases) : '-'
+      },
+      secondary: {
+        label: 'Per 1 Million',
+        value: stats ? commafy(stats?.casesPerOneMillion) : '-'
+      }
+    },
+    {
+      primary: {
+        label: 'Total Deaths',
+        value: stats ? commafy(stats?.deaths) : '-'
+      },
+      secondary: {
+        label: 'Per 1 Million',
+        value: stats ? commafy(stats?.deathsPerOneMillion) : '-'
+      }
+    },
+    {
+      primary: {
+        label: 'Total Tests',
+        value: stats ? commafy(stats?.tests) : '-'
+      },
+      secondary: {
+        label: 'Per 1 Million',
+        value: stats ? commafy(stats?.testsPerOneMillion) : '-'
+      }
+    }
+  ]
+
 
   /**
    * mapEffect
@@ -22,21 +72,11 @@ const IndexPage = () => {
    */
 
   async function mapEffect({ leafletElement:map } = {}) {
-    if(!map) return;
-    let response;
-    try{
-      response = await axios.get('https://corona.lmao.ninja/v2/countries');
-    }catch (e){
-      console.log('E',e);
-      return;
-    }
-    const {data} = response;
-    const hasData = Array.isArray(data)&&data.length>0;
-    if(!hasData) return;
-
+    if(!hasCountries) return;
+    
     const geoJson={
       type:'FeatureCollection',
-      features:data.map((country={})=>{
+      features:countries.map((country={})=>{
         const{countryInfo={}}=country;
         const{lat, long:lng}=countryInfo;
         return{
@@ -122,9 +162,44 @@ const IndexPage = () => {
   return (
     <Layout pageName="home">
       <Helmet>
-        <title>Covid19 Stat Map</title>
+     
       </Helmet>
-      <Map {...mapSettings}/>
+      <div className="tracker-last-updated">
+  <p>
+  legend: 
+  </p>
+  </div>
+      <div className="tracker">
+  <Map {...mapSettings} />
+  <div className="tracker-stats">
+  
+    <ul>
+      { dashboardStats.map(({ primary = {}, secondary = {} }, i) => {
+        return (
+          <li key={`Stat-${i}`} className="tracker-stat">
+            { primary.value && (
+              <p className="tracker-stat-primary">
+                { primary.value }
+                <strong>{ primary.label }</strong>
+              </p>
+            )}
+            { secondary.value && (
+              <p className="tracker-stat-secondary">
+                { secondary.value }
+                <strong>{ secondary.label }</strong>
+              </p>
+            )}
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+</div>
+<div className="tracker-last-updated">
+  <p>
+  Last Updated: { stats ? friendlyDate(stats?.updated) : '-' }
+  </p>
+</div>
     </Layout>
   );
 };

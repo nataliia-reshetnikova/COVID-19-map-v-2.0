@@ -10,7 +10,7 @@ const LOCATION = {
   lng: 30
 };
 const CENTER = [LOCATION.lat, LOCATION.lng];
-const DEFAULT_ZOOM = 2.5;
+const DEFAULT_ZOOM = 0.7;
 
 const SecondPage = () => {
 
