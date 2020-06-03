@@ -1,13 +1,10 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import Leaflet from 'leaflet';
-import { useTracker } from 'hooks';
 import Layout from 'components/Layout';
 import Map from 'components/Map';
 import { commafy, friendlyDate } from 'lib/util';
-
-
-
+import { useTracker } from 'hooks';
 
 const LOCATION = {
   lat: 20,
@@ -18,16 +15,15 @@ const DEFAULT_ZOOM = 1.5;
 
 const IndexPage = () => {
 
+  const { data: countries = [] } = useTracker({
+    api: 'countries'
+  });
 
   const { data: stats = {} } = useTracker({
     api: 'all'
   });
   
-  console.log('stats', stats)
-
-  const { data: countries = [] } = useTracker({
-    api: 'countries'
-  });
+  console.log('stats', stats);
   
   const hasCountries = Array.isArray(countries) && countries.length > 0;
   

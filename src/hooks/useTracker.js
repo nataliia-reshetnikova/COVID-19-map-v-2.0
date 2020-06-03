@@ -73,3 +73,4 @@ const useTracker = ({ api = 'all' }) => {
     ...tracker
   }
 };
+export default useTracker;
