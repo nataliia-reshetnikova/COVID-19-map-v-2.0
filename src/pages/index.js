@@ -126,7 +126,6 @@ const IndexPage = () => {
           <h2>${country}</h2>
           <ul>
             <li><span>Confirmed:</span>  <span>${cases}</span></li>
-            <li><span>Updated:</span>  <span>${updatedFromatted}</span></li>
             <li><span>Deaths:</span> <span>${deaths}</span></li>
             <li><span>Recovered:</span>  <span>${recovered}</span></li>
             <hr/>
@@ -136,6 +135,8 @@ const IndexPage = () => {
             <li><span>Death rate:</span>  <span>${deathRate.toFixed(2)}%</span></li>
             <li><span>Recovery rate:</span>  <span>${recoveryRate.toFixed(2)}%</span></li>
             <li><span>Resolved rate:</span>  <span>${resolved.toFixed(2)}%</span></li>
+            </hr>
+            <li><span>Updated:</span>  <span>${updatedFromatted}</span></li>
           </ul>
         </span>
         ${casesString}

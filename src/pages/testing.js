@@ -22,30 +22,30 @@ const TestingPage = () => {
   const { data: stats = {} } = useTracker({
     api: 'all'
   });
-  
-  console.log('stats', stats);
-  
+
+
   const hasCountries = Array.isArray(countries) && countries.length > 0;
-  
+  const testPerPerson = (stats?.tests/stats?.population).toFixed(4);
+  const testRate = ((stats?.tests/stats?.population)*100).toFixed(2);
   const dashboardStats = [
     {
       primary: {
-        label: 'Total Cases',
-        value: stats ? commafy(stats?.cases) : '-'
+        label: 'Tests per one person',
+        value: stats ? testPerPerson : '-'
       },
       secondary: {
-        label: 'Per 1 Million',
-        value: stats ? commafy(stats?.casesPerOneMillion) : '-'
+        label: 'Test rate',
+        value: stats ? testRate+"%" : '-'
       }
     },
     {
       primary: {
-        label: 'Total Deaths',
-        value: stats ? commafy(stats?.deaths) : '-'
+        label: 'Population',
+        value: stats ? commafy(stats?.population) : '-'
       },
       secondary: {
-        label: 'Per 1 Million',
-        value: stats ? commafy(stats?.deathsPerOneMillion) : '-'
+        label: 'Affected countries',
+        value: stats ? commafy(stats?.affectedCountries) : '-'
       }
     },
     {
@@ -55,7 +55,7 @@ const TestingPage = () => {
       },
       secondary: {
         label: 'Per 1 Million',
-        value: stats ? commafy(stats?.testsPerOneMillion) : '-'
+        value: stats ? stats?.testsPerOneMillion : '-'
       }
     }
   ]
@@ -90,7 +90,6 @@ const TestingPage = () => {
     function countryPoint(feature={}, latlng){
       const {properties={}} = feature;
       let updatedFromatted;
-      let testsString;
       let additionalClass="none";
       let populationString;
       const{
@@ -98,25 +97,19 @@ const TestingPage = () => {
         population,
         updated,
         cases,
-        casesPerOneMillion,
         tests,
-        testsPerOneMillion
+        active
       } = properties
       populationString = `${population}`;
       if(population>1000000){
         populationString=`${populationString.slice(0,-6)}M+`
       }
-      testsString=`${tests}`;
-      if(tests>=1000<100000){
-        testsString = `${testsString.slice(0,-3)}k+`
-      }
-      if(tests>=1000000){
-        testsString = `${testsString.slice(0,-6)}M+`
-      }
-    //   if(cases<=1000) additionalClass="good";
-    //   if(cases>1000&&cases<=10000) additionalClass="moderate";
-    //   if(cases>10000&&cases<=100000) additionalClass="high";
-    //   if(cases>100000) additionalClass="critical";
+      let testingRate = ((tests/population)*100).toFixed(2);
+      let infectionRate = ((active/population)*100).toFixed(2);
+      if(testingRate>10) additionalClass="highTesting";
+      if(testingRate>5&&testingRate<=10) additionalClass="moderateTesting";
+      if(testingRate>3&&testingRate<5) additionalClass="lowTesting";
+      if(testingRate<3) additionalClass="noTesting";
       if(updated){
         updatedFromatted=new Date(updated).toDateString();
       }
@@ -125,18 +118,17 @@ const TestingPage = () => {
         <span class="icon-marker-tooltip">
           <h2>${country}</h2>
           <ul>
-
           <li><span>Population:</span>  <span>${populationString}</span></li>
           <li><span>Updated:</span>  <span>${updatedFromatted}</span></li>
           <hr/>
-            <li><span>Total tests:</span>  <span>${tests}</span></li>
-            <li><span>Tests per million:</span>  <span>${testsPerOneMillion}</span></li>
+            <li><span>Total tests:</span>  <span>${commafy(tests)}</span></li>
+            <li><span>Testing rate:</span>  <span>${testingRate}%</span></li>
             <hr/>
             <li><span>Confirmed cases:</span>  <span>${cases}</span></li>
-            <li><span>Cases per million:</span>  <span>${casesPerOneMillion}</span></li>
+            <li><span>Current infection rate (active cases/population):</span>  <span>${infectionRate}%</span></li>
           </ul>
         </span>
-        ${testsString}
+        ${testingRate}%
         </span>
       `;
       return Leaflet.marker(latlng,{
@@ -164,13 +156,8 @@ const TestingPage = () => {
   return (
     <Layout pageName="home">
       <Helmet>
-      <title>Testing Page</title>
+      <title>Testing Stats</title>
       </Helmet>
-      <div className="tracker-last-updated">
-  <p>
-  legend: 
-  </p>
-  </div>
       <div className="tracker">
   <Map {...mapSettings} />
   <div className="tracker-stats">
@@ -196,11 +183,10 @@ const TestingPage = () => {
       })}
     </ul>
   </div>
+  <div className="tracker-last-updated">
+  <p>  Last Updated: { stats ? friendlyDate(stats?.updated) : '-' }</p>
+  <p>Sources: <a href="https://corona.lmao.ninja/" target="_blank">Novel COVID API</a></p>
 </div>
-<div className="tracker-last-updated">
-  <p>
-  Last Updated: { stats ? friendlyDate(stats?.updated) : '-' }
-  </p>
 </div>
     </Layout>
   );
