@@ -171,6 +171,13 @@ const IndexPage = () => {
       </Helmet>
      
       <div className="tracker">
+      <div className="travelDashboard-last-updated">
+      <span>Color guide for warning levels: </span>
+      <span className="green">Low Risk (index value: 0 - 2.5)</span>
+      <span className="blue">Medium Risk (index value: 2.5 - 3.5)</span>
+      <span className="yellow">High Risk (index value: 3.5 - 4.5)</span>
+      <span className="red">Extreme Warning (index value: 4.5 - 5)</span>
+      </div>
   <Map {...mapSettings} />
   <div className="tracker-stats">
   

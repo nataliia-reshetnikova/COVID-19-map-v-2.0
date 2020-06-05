@@ -26,7 +26,7 @@ const TestingPage = () => {
 
   const hasCountries = Array.isArray(countries) && countries.length > 0;
   const testPerPerson = (stats?.tests/stats?.population).toFixed(4);
-  const testRate = ((stats?.tests/stats?.population)*100).toFixed(2);
+  const globalTestRate = ((stats?.tests/stats?.population)*100).toFixed(2);
   const dashboardStats = [
     {
       primary: {
@@ -35,7 +35,7 @@ const TestingPage = () => {
       },
       secondary: {
         label: 'Test rate',
-        value: stats ? testRate+"%" : '-'
+        value: stats ? globalTestRate+"%" : '-'
       }
     },
     {
@@ -104,12 +104,13 @@ const TestingPage = () => {
       if(population>1000000){
         populationString=`${populationString.slice(0,-6)}M+`
       }
-      let testingRate = ((tests/population)*100).toFixed(2);
-      let infectionRate = ((active/population)*100).toFixed(2);
+      let testingRate = (population>0)?((tests/population)*100).toFixed(2):'?';
+      let infectionRate = (population>0)?((active/population)*100).toFixed(2):'?';
       if(testingRate>10) additionalClass="highTesting";
       if(testingRate>5&&testingRate<=10) additionalClass="moderateTesting";
       if(testingRate>3&&testingRate<5) additionalClass="lowTesting";
       if(testingRate<3) additionalClass="noTesting";
+      let testingRateString =  (testingRate==='?') ? '?':testingRate+'%';
       if(updated){
         updatedFromatted=new Date(updated).toDateString();
       }
@@ -122,13 +123,13 @@ const TestingPage = () => {
           <li><span>Updated:</span>  <span>${updatedFromatted}</span></li>
           <hr/>
             <li><span>Total tests:</span>  <span>${commafy(tests)}</span></li>
-            <li><span>Testing rate:</span>  <span>${testingRate}%</span></li>
+            <li><span>Testing rate:</span>  <span>${testingRateString}</span></li>
             <hr/>
             <li><span>Confirmed cases:</span>  <span>${cases}</span></li>
-            <li><span>Current infection rate (active cases/population):</span>  <span>${infectionRate}%</span></li>
+            <li><span>Infection rate:</span>  <span>${infectionRate}%</span></li>
           </ul>
         </span>
-        ${testingRate}%
+        ${testingRateString}
         </span>
       `;
       return Leaflet.marker(latlng,{
@@ -159,7 +160,13 @@ const TestingPage = () => {
       <title>Testing Stats</title>
       </Helmet>
       <div className="tracker">
-        
+      <div className="travelDashboard-last-updated">
+      <span>Color guide for warning levels: </span>
+      <span className="green">Low Risk (index value: 0 - 2.5)</span>
+      <span className="blue">Medium Risk (index value: 2.5 - 3.5)</span>
+      <span className="yellow">High Risk (index value: 3.5 - 4.5)</span>
+      <span className="red">Extreme Warning (index value: 4.5 - 5)</span>
+      </div>
   <Map {...mapSettings} />
   <div className="test-stats">
   

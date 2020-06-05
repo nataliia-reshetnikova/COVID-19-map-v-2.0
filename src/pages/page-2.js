@@ -24,8 +24,6 @@ const SecondPage = () => {
   });
   const hasCountries = Array.isArray(countries) && countries.length > 0;
 
-  console.log("stats", stats);
-
   const dashboardStats = [
     {
       primary: {
@@ -79,20 +77,17 @@ const SecondPage = () => {
       console.log("E", e);
       return;
     }
-    // const {data} = responseGeo;
     const travelData = responseTravel.data.data;
-    // const hasData = Array.isArray(data)&&data.length>0;
     const hasTravelData = Object.keys(travelData).length > 0;
     if (!hasTravelData) return;
     countries.map((country = {}) => {
       let iso2 = country.countryInfo.iso2;
       if (travelData.hasOwnProperty(iso2)) {
         let score = travelData[iso2].advisory.score;
-        country["score"] = score;
+        if(score) country["score"] = score;
       }
       return country;
     });
-    console.log(countries);
     const geoJson = {
       type: "FeatureCollection",
       features: countries.map((country = {}) => {
