@@ -161,7 +161,7 @@ const TestingPage = () => {
       <div className="tracker">
         
   <Map {...mapSettings} />
-  <div className="test-Stat">
+  <div className="test-stats">
   
     <ul>
       { dashboardStats.map(({ primary = {}, secondary = {} }, i) => {
