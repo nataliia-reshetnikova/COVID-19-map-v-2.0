@@ -169,11 +169,7 @@ const IndexPage = () => {
       <Helmet>
       <title>Cases Stats</title>
       </Helmet>
-      <div className="tracker-last-updated">
-  <p>
-  legend: 
-  </p>
-  </div>
+     
       <div className="tracker">
   <Map {...mapSettings} />
   <div className="tracker-stats">

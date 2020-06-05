@@ -1,7 +1,7 @@
 .tracker-stats {
 
     color: rgb(13, 231, 42);
-    background-color: black;
+    background-color: rgb(36, 36, 36);
     border-top: solid 1px darken($blue-grey-900, 5);
   
     ul {
@@ -55,7 +55,7 @@
   .tracker-last-updated {
 
     color: white;
-    background-color: black;
+    background-color: rgb(36, 36, 36);
     padding: .8em 0;
   
     p {

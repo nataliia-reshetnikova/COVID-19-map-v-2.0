@@ -148,7 +148,7 @@ const TestingPage = () => {
 
   const mapSettings = {
     center: CENTER,
-    defaultBaseMap: 'Mapbox',
+    defaultBaseMap: 'testDash',
     zoom: DEFAULT_ZOOM,
     mapEffect
   };
@@ -159,21 +159,22 @@ const TestingPage = () => {
       <title>Testing Stats</title>
       </Helmet>
       <div className="tracker">
+        
   <Map {...mapSettings} />
-  <div className="tracker-stats">
+  <div className="test-Stat">
   
     <ul>
       { dashboardStats.map(({ primary = {}, secondary = {} }, i) => {
         return (
-          <li key={`Stat-${i}`} className="tracker-stat">
+          <li key={`Stat-${i}`} className="test-stat">
             { primary.value && (
-              <p className="tracker-stat-primary">
+              <p className="test-stat-primary">
                 { primary.value }
                 <strong>{ primary.label }</strong>
               </p>
             )}
             { secondary.value && (
-              <p className="tracker-stat-secondary">
+              <p className="test-stat-secondary">
                 { secondary.value }
                 <strong>{ secondary.label }</strong>
               </p>
@@ -183,7 +184,7 @@ const TestingPage = () => {
       })}
     </ul>
   </div>
-  <div className="tracker-last-updated">
+  <div className="test-last-updated">
   <p>  Last Updated: { stats ? friendlyDate(stats?.updated) : '-' }</p>
   <p>Sources: <a href="https://corona.lmao.ninja/" target="_blank">Novel COVID API</a></p>
 </div>
