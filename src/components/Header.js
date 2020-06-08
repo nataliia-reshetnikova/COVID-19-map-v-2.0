@@ -19,6 +19,9 @@ const Header = () => {
           <li>
             <Link to="/testing/">Testing</Link>
           </li>
+          <li>
+            <a href="https://nataliereshetnikova.github.io/cases-timeline/">Cases Timeline</a>
+          </li>
         </ul>
       </Container>
     </header>
