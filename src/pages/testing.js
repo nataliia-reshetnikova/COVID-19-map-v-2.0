@@ -161,11 +161,11 @@ const TestingPage = () => {
       </Helmet>
       <div className="tracker">
       <div className="travelDashboard-last-updated">
-      <span>Color guide for warning levels: </span>
-      <span className="green">Low Risk (index value: 0 - 2.5)</span>
-      <span className="blue">Medium Risk (index value: 2.5 - 3.5)</span>
-      <span className="yellow">High Risk (index value: 3.5 - 4.5)</span>
-      <span className="red">Extreme Warning (index value: 4.5 - 5)</span>
+      <span>Color guide:Total number of test performed: </span>
+      <span className="rgba(7, 223, 236)">Less than 3% of population</span>
+      <span className="blue">More than 3% and less than 5% of population</span>
+      <span className="yellow">More than 5% and Less than 10% of population</span>
+      <span className="red">More than 10% of population</span>
       </div>
   <Map {...mapSettings} />
   <div className="test-stats">
@@ -193,7 +193,7 @@ const TestingPage = () => {
   </div>
   <div className="test-last-updated">
   <p>  Last Updated: { stats ? friendlyDate(stats?.updated) : '-' }</p>
-  <p>Sources: <a href="https://corona.lmao.ninja/" target="_blank">Novel COVID API</a></p>
+  <p>Sources: <a href="https://www.travel-advisory.info/" target="_blank">Travel-Advisory.info</a> & <a href="https://corona.lmao.ninja/" target="_blank">Novel COVID API</a></p>
 </div>
 </div>
     </Layout>

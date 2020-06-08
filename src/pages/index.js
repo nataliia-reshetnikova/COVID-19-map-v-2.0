@@ -202,11 +202,13 @@ const IndexPage = () => {
       })}
     </ul>
   </div>
-</div>
+
 <div className="tracker-last-updated">
   <p>
   Last Updated: { stats ? friendlyDate(stats?.updated) : '-' }
   </p>
+  <p>Sources: <a href="https://www.travel-advisory.info/" target="_blank">Travel-Advisory.info</a> & <a href="https://corona.lmao.ninja/" target="_blank">Novel COVID API</a></p>
+</div>
 </div>
     </Layout>
   );
