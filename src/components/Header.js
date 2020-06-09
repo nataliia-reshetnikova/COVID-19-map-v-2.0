@@ -20,10 +20,7 @@ const Header = () => {
             <Link to="/testing/">Testing</Link>
           </li>
           <li>
-            <a href="https://nataliereshetnikova.github.io/cases-timeline/">Cases Timeline</a>
-          </li>
-          <li>
-          <Link to="/history/">History</Link>
+          <Link to="/history/">Cases Timeline</Link>
           </li>
         </ul>
       </Container>

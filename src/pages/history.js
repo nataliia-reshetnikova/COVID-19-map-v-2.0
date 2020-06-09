@@ -5,13 +5,6 @@ import Layout from "components/Layout";
 import ReactEcharts from "echarts-for-react";
 import leaflet from "echarts-leaflet";
 
-const LOCATION = {
-  lat: 20,
-  lng: 30,
-};
-const CENTER = [LOCATION.lat, LOCATION.lng];
-const DEFAULT_ZOOM = 1.5;
-
 function setLastUpdated(date, days) {
   let lastUpdated = document.getElementById("lastUpdated");
   const copy = new Date(Number(date));
@@ -75,60 +68,11 @@ const HistoryPage = () => {
         },
       };
 
-  const [chartOptions, setOptions] = useState( {
-    baseOption: {
-      tooltip: {
-        show: true,
-        formatter: function (params) {
-          return params.value[3] + ":" + params.value[2];
-        },
-      },
-      series: [
-        {
-          type: "scatter",
-          animation: false,
-          coordinateSystem: "leaflet",
-          data: [],
-          symbolSize: function (value) {
-            return value[2] > 0 ? Math.log(value[2]) * 3 : 0;
-          },
-          itemStyle: {
-            color: "red",
-            borderWidth: 2,
-            borderColor: "rgba(255, 255, 255, 0.5)",
-          },
-        },
-      ],
-      visualMap: {
-        type: "continuous",
-        min: 0,
-        max: 300,
-        inRange: {
-          color: ["orange", "red"],
-          opacity: [0.5, 0.8],
-        },
-        dimension: 2,
-      },
-      leaflet: {
-        center: [0, 40],
-        zoom: 3,
-        roam: true,
-        tiles: [
-          {
-            urlTemplate:
-              "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
-          },
-        ],
-      },
-    },
-  });
+  const [chartOptions, setOptions] = useState(null);
   const apiURL =
     "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv";
   
-    
-  
-  
-    const fetchData = async () => {
+    useEffect(async()=>{
     const responseHistory = await axios.get(apiURL);
     const HistoryData = responseHistory.data;
     const hasHistoryData = HistoryData.length > 0;
@@ -196,7 +140,7 @@ const HistoryPage = () => {
     echartsOption.timeline = timeline;
     echartsOption.options = options;
     setOptions(echartsOption);
-  };
+  },[]);
 
   return (
     <Layout pageName="home">
@@ -208,11 +152,6 @@ const HistoryPage = () => {
         <span className="orange"> less than 50</span>
         <span className="orangered">50 - 150</span>
         <span className="red">> more than 150</span>
-      </div>
-      <div>
-        <button className="fetch-button" onClick={fetchData}>
-          Fetch Data
-        </button>
       </div>
       <ReactEcharts
         option={chartOptions?chartOptions:{}}
