@@ -22,6 +22,9 @@ const Header = () => {
           <li>
             <a href="https://nataliereshetnikova.github.io/cases-timeline/">Cases Timeline</a>
           </li>
+          <li>
+          <Link to="/history/">History</Link>
+          </li>
         </ul>
       </Container>
     </header>
