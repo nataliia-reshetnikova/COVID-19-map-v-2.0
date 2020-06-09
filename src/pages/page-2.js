@@ -156,14 +156,14 @@ const SecondPage = () => {
     });
     geoJsonLayers.addTo(map);
   }
-
+  
   const mapSettings = {
     center: CENTER,
     defaultBaseMap: "Mapbox2",
     zoom: DEFAULT_ZOOM,
     mapEffect,
   };
-
+  console.log(mapSettings);
   return (
     <Layout pageName="home">
       <Helmet>

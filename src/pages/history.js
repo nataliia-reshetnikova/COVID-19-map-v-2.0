@@ -1,9 +1,9 @@
 import React from "react";
 import Helmet from "react-helmet";
-import Leaflet from "leaflet";
 import axios from "axios";
 import Layout from "components/Layout";
-import Map from "components/Map";
+import ReactEcharts from 'echarts-for-react';
+import leaflet from 'echarts-leaflet';
 
 const LOCATION = {
   lat: 20,
@@ -11,6 +11,54 @@ const LOCATION = {
 };
 const CENTER = [LOCATION.lat, LOCATION.lng];
 const DEFAULT_ZOOM = 1.5;
+
+let echartsOption={
+    baseOption: {
+        tooltip: {
+          show: true,
+          formatter: function (params) {
+            return params.value[3] + ":" + params.value[2];
+          },
+        },
+        series: [
+          {
+            type: "scatter",
+            animation: false,
+            coordinateSystem: "leaflet",
+            data: [],
+            symbolSize: function (value) {
+              return value[2] > 0 ? Math.log(value[2]) * 3 : 0;
+            },
+            itemStyle: {
+              color: "red",
+              borderWidth: 2,
+              borderColor: "rgba(255, 255, 255, 0.5)",
+            },
+          },
+        ],
+        visualMap: {
+          type: "continuous",
+          min: 0,
+          max: 300,
+          inRange: {
+            color: ["orange", "red"],
+            opacity: [0.5, 0.8],
+          },
+          dimension: 2,
+        },
+        leaflet: {
+          center: [0, 40],
+          zoom:3,
+          roam: true,
+          tiles: [
+            {
+              urlTemplate:
+                "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+            },
+          ],
+        },
+      }
+}
 
 function setLastUpdated(date, days) {
     let lastUpdated = document.getElementById("lastUpdated");
@@ -26,8 +74,8 @@ function setLastUpdated(date, days) {
   }
 
 const HistoryPage = () => {
-  async function mapEffect({ leafletElement: map } = {}) {
-    if (!map) return;
+
+  async function mapEffect() {
     let responseHistory;
     try {
       responseHistory = await axios.get(
@@ -62,6 +110,9 @@ const HistoryPage = () => {
       }
     }
 
+    //set last updated data:
+    setLastUpdated(new Date(2020, 0, 22), result.length-1);
+
     var options = result.map(function (day) {
       return {
         series: {
@@ -69,69 +120,62 @@ const HistoryPage = () => {
         },
       };
     });
-    console.log("options",options);
-    console.log("result",result);
-    // chart.setOption({
-    //   timeline: {
-    //     axisType: "category",
-    //     data: lines[0].split(",").slice(4),
-    //     autoPlay: true,
-    //     playInterval: 500,
-    //     symbolSize: 4,
-    //     tooltip: {
-    //       formatter: function (params) {
-    //         return params.name;
-    //       },
-    //     },
-    //     itemStyle: {
-    //       color: "#ccc",
-    //     },
-    //     lineStyle: {
-    //       color: "#eee",
-    //     },
-    //     label: {
-    //       color: "#999",
-    //     },
-    //     checkpointStyle: {
-    //       color: "red",
-    //     },
-    //     controlStyle: {
-    //       borderColor: "#bbb",
-    //     },
-    //   },
-    //   options: options,
-    // });
 
-    //set last updated data:
-    setLastUpdated(new Date(2020, 0, 22), result.length-1);
-}
-const mapSettings = {
-    center: CENTER,
-    defaultBaseMap: "Mapbox2",
-    zoom: DEFAULT_ZOOM,
-    mapEffect,
-  };
+    let timeline= {
+            axisType: "category",
+            data: lines[0].split(",").slice(4),
+            autoPlay: true,
+            playInterval: 500,
+            symbolSize: 4,
+            tooltip: {
+              formatter: function (params) {
+                return params.name;
+              },
+            },
+            itemStyle: {
+              color: "#ccc",
+            },
+            lineStyle: {
+              color: "#eee",
+            },
+            label: {
+              color: "#999",
+            },
+            checkpointStyle: {
+              color: "red",
+            },
+            controlStyle: {
+              borderColor: "#bbb",
+            },
+          };
+        echartsOption.timeline = timeline;
+        echartsOption.options = options;
+        return echartsOption;
+    }
+    mapEffect().then(function(res){
+        echartsOption= res;
+    });
+    console.log(echartsOption);
 
   return (
     <Layout pageName="home">
       <Helmet>
         <title>Cases Timeline</title>
       </Helmet>
-      <div className="tracker">
-      <div className="travelDashboard-last-updated">
-      <span>Color guide for cases number: </span>
+      <div className="historyLegend">
+        <span>Color guide for cases number: </span>
         <span className="orange"> less than 50</span>
         <span className="orangered">50 - 150</span>
-        <span className="red">more than 150</span>
-      </div>
-      <Map {...mapSettings} />
-        <div className="travelDashboard-last-updated">
+        <span className="red">> more than 150</span>
+    </div>
+      <ReactEcharts option={echartsOption} style={{height: '82vh', width: '100%'}} />
+      <div className="historyLegend">
         <p>Last Updated:<span id="lastUpdated"></span> </p>
         <p>Sources: <a href="https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv" target="_blank">COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University</a></p>
       </div>
-      </div>
     </Layout>
   );
+
 };
 
 export default HistoryPage;

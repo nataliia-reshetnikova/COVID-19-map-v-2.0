@@ -5,6 +5,9 @@
   "author": "Natalie & Hamidreza",
   "dependencies": {
     "axios": "^0.19.2",
+    "echarts": "^4.8.0",
+    "echarts-for-react": "^2.0.16",
+    "echarts-leaflet": "^1.1.0",
     "gatsby": "^2.20.12",
     "gatsby-plugin-manifest": "^2.4.9",
     "gatsby-plugin-react-helmet": "^3.2.1",
