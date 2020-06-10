@@ -157,12 +157,12 @@ const TestingPage = () => {
   return (
     <Layout pageName="home">
       <Helmet>
-      <title>Testing Stats</title>
+      <title>Tests Performed</title>
       </Helmet>
       <div className="tracker">
       <div className="travelDashboard-last-updated">
       <span>Color guide:Total number of test performed: </span>
-      <span className="rgba(7, 223, 236)">Less than 3% of population</span>
+      <span className="notest">Less than 3% of population</span>
       <span className="blue">More than 3% and less than 5% of population</span>
       <span className="yellow">More than 5% and Less than 10% of population</span>
       <span className="red">More than 10% of population</span>

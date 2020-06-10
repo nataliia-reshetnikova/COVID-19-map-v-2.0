@@ -78,4 +78,11 @@
 .yellow{
     border-bottom:2px dashed rgba(255, 255, 0, 0.45);
 }
+  
+}
+@media only screen and (max-width: 600px) {
+  .tracker ul{
+      grid-template-columns: 1fr;
+     
   }
+}
