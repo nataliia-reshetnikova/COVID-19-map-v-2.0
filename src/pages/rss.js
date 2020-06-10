@@ -62,7 +62,7 @@ const RssPage = () => {
                 <p>{item.description}</p>
                 <p>{item.pubDate}</p>
                 </li>
-        }) : "no data"}
+        }) : "loading data"}
     </ul>
       </div>
       <div className="historyLegend">
