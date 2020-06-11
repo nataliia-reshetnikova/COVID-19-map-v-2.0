@@ -50,22 +50,25 @@ const RssPage = () => {
       <Helmet>
         <title>Travel Advisory RSS</title>
       </Helmet>
-      <div className="historyLegend">
+      <div className="rss">
+      <div className="rssLegend">
       <h1>International Travel Advisories</h1>
         <span>Each day <a href="https://www.travel-advisory.info/">Travel Advisory</a> collects advisories from different authorities and compute a risk assessment for every country in the world. Use this data to prepare your travel plans and get a solid first impression. </span>
       </div>
-      <div className="rss">
-    <ul>
-        {news?  news.map((item,index)=>{
-            return <li>
-                <a href={item.link}>{item.title}</a>
+    <div className="grid-container">
+        {news?  news.map((item)=>{
+            return <div className="item">
+              <div className="itemHeader">
+                <a target="_blank" href={item.link}>{item.title}</a>
+              </div>
+                <hr/>
                 <p>{item.description}</p>
-                <p>{item.pubDate}</p>
-                </li>
-        }) : "loading data"}
-    </ul>
-      </div>
-      <div className="historyLegend">
+                <br/>
+                <p className="date">Publication date: {item.pubDate}</p>
+                </div>
+        }) : ""}
+    </div>
+      <div className="rssLegendSources">
         <p>
           Last Updated:<span id="lastUpdated"></span>{" "}
         </p>
@@ -78,6 +81,7 @@ const RssPage = () => {
             Travel Advisory.info
           </a>
         </p>
+      </div>
       </div>
     </Layout>
   );
