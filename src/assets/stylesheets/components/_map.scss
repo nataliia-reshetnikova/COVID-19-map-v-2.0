@@ -59,21 +59,26 @@
 .good{
   width: 2em;
   height: 2em;
+  background-color:rgba(74, 229, 74, 0.336);
+  
  
 }
 .moderate{
-  width: 5em;
-  height: 5em;
+  width: 3em;
+  height: 3em;
+  background-color:rgba(48, 203, 0, 0.336);
 
 }
 .high{
-  width: 7em;
-  height: 7em;
+  width: 4em;
+  height: 4em;
+  background-color:rgba(15, 146, 0, 0.336);
  
 }
 .critical{
-  width: 8em;
-  height: 8em;
+  width: 6em;
+  height: 6em;
+  background-color:rgba(0, 98, 3, 0.336);
 
 }
 //classes of travel score
@@ -83,8 +88,8 @@
   background-color:rgba(0, 128, 0, 0.336);
 }
 .blueScore{
-  width: 2.7em;
-  height: 2.7em;
+  width: 2em;
+  height: 2em;
   background-color:rgba(0, 204, 255, 0.301);
 }
 .yellowScore{
@@ -101,8 +106,8 @@
 //classes of testing page
 
 .highTesting{
-  width: 10em;
-  height: 10em;
+  width: 6em;
+  height: 6em;
   background-color:rgba(15, 57, 255, 0.301);
  
   
@@ -110,24 +115,24 @@
 }
 
 .moderateTesting{
-  width: 8em;
-  height: 8em;
+  width: 5em;
+  height: 5em;
   background-color:rgba(7, 110, 229, 0.301);
 
   
 }
 
 .lowTesting{
-  width: 6em;
-  height: 6em;
+  width:4em;
+  height: 4em;
   background-color:rgba(1, 178, 254, 0.301);
 
   
 } 
 
 .noTesting{
-  width: 4em;
-  height: 4em;
+  width: 3em;
+  height: 3em;
   background-color:rgba(7, 223, 236, 0.5301);
 
   

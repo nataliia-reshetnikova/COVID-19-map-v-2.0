@@ -11,7 +11,7 @@ const Header = () => {
         <img alt="COVID-19 LOGO" className="virusIcon" src= {virusIcon}/>
         <ul>
           <li>
-            <Link to="/">Cases</Link>
+            <Link to="/">Total Cases</Link>
           </li>
           <li>
             <Link to="/page-2/">Travel Advisory</Link>

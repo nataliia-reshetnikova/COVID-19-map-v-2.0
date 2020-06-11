@@ -52,7 +52,7 @@
   
   }
 
-  .tracker-last-updated {
+  .travelDashboard-last-updated {
 
     color: white;
     background-color: rgb(36, 36, 36);
@@ -63,6 +63,18 @@
       font-size: .8em;
       text-align: center;
       margin: 0;
+    }
+    .LR{
+      border-bottom:2px dashed rgb(74, 229, 74);;
+    }
+    .MR{
+      border-bottom:2px dashed rgb(48, 203, 0);
+    }
+    .HR{
+        border-bottom:2px dashed rgb(15, 146, 0);
+    }
+    .EW{
+        border-bottom:2px dashed rgb(0, 98, 3);
     }
   
   }

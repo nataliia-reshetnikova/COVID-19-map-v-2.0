@@ -159,13 +159,16 @@ const TestingPage = () => {
       <Helmet>
       <title>Tests Performed</title>
       </Helmet>
+
       <div className="tracker">
-      <div className="travelDashboard-last-updated">
+      <div className="test-last-updated">
       <span>Color guide:Total number of test performed: </span>
-      <span className="notest">Less than 3% of population</span>
-      <span className="blue">More than 3% and less than 5% of population</span>
-      <span className="yellow">More than 5% and Less than 10% of population</span>
-      <span className="red">More than 10% of population</span>
+      </div>
+      <div className="test-last-updated">
+      <span className="l3">Less than 3% of population</span>
+      <span className="t35">More than 3% and less than 5% of population</span>
+      <span className="t510">More than 5% and Less than 10% of population</span>
+      <span className="m10">More than 10% of population</span>
       </div>
   <Map {...mapSettings} />
   <div className="test-stats">

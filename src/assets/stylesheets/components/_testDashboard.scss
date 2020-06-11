@@ -55,7 +55,7 @@
 
   .test-last-updated {
 
-    color: white;
+    color: rgb(24, 22, 22);
     background-color: #d2d5d5;
     padding: .8em 1em;
     display: flex;
@@ -67,18 +67,18 @@
       text-align: center;
       margin: 0;
     }
-  .red{
-      border-bottom:2px dashed rgba(255, 0, 0, 0.45);
-  }
-  .green{
-    border-bottom:2px dashed rgba(0, 128, 0, 0.45);
-}
-.blue{
-    border-bottom:2px dashed rgba(0, 247, 255, 0.45);
-}
-.yellow{
-    border-bottom:2px dashed rgba(255, 255, 0, 0.45);
-}
+    .l3{
+        border-bottom:2px dashed rgb(7, 223, 236);
+    }
+    .t35{
+    border-bottom:2px dashed rgb(1, 178, 254);
+    }
+    .t510{
+        border-bottom:2px dashed rgb(7, 110, 229);
+    }
+    .m10{
+        border-bottom:2px dashed rgb(15, 57, 255);
+    }
 }
 @media only screen and (max-width: 600px) {
     .test-stats ul{

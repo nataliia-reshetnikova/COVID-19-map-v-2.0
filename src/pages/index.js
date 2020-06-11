@@ -167,16 +167,19 @@ const IndexPage = () => {
   return (
     <Layout pageName="home">
       <Helmet>
-      <title>Cases Stats</title>
+      <title>Total Cases</title>
       </Helmet>
      
       <div className="tracker">
       <div className="travelDashboard-last-updated">
-      <span>Color guide for warning levels: </span>
-      <span className="green">Low Risk (index value: 0 - 2.5)</span>
-      <span className="blue">Medium Risk (index value: 2.5 - 3.5)</span>
-      <span className="yellow">High Risk (index value: 3.5 - 4.5)</span>
-      <span className="red">Extreme Warning (index value: 4.5 - 5)</span>
+      <span>Color guide for Total Cases: </span>
+      </div>
+      <div className="travelDashboard-last-updated">
+      
+      <span className="LR">Total Cases less than 1000 Cases</span>
+      <span className="MR">Total Cases More than 1000 and Less than 1000</span>
+      <span className="HR">Total Cases More than 10000 and Less than 10000</span>
+      <span className="EW">Total Cases More than 100000 Cases</span>
       </div>
   <Map {...mapSettings} />
   <div className="tracker-stats">
