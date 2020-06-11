@@ -4,6 +4,17 @@
 }
 
 .container-content {
-  max-width: 50em;
-  padding: 0 1em;
+  max-width: 80em;
+  padding: 0em 1em;
+}
+@media only screen and (max-width: 600px) {
+  header .container{
+    height: auto;
+  }
+  .container-content {
+    flex-wrap: wrap;
+    width: 100%;
+    height: fit-content;
+    text-align: center;
+  }
 }

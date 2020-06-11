@@ -22,6 +22,9 @@ const Header = () => {
           <li>
           <Link to="/history/">Cases Timeline</Link>
           </li>
+          <li>
+          <Link to="/rss/">Latest Advisories</Link>
+          </li>
         </ul>
       </Container>
     </header>
