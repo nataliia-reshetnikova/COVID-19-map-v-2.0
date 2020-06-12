@@ -52,17 +52,26 @@
   
   }
 
-  .travelDashboard-last-updated {
-
+  .indexDashboard-last-updated {
     color: white;
     background-color: rgb(36, 36, 36);
-    padding: .8em 0;
-  
+    padding: .8em 1em;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin: 0;
     p {
       color: $blue-grey-300;
       font-size: .8em;
       text-align: center;
-      margin: 0;
+      margin: 0px;
+    }
+    span{
+      text-align: center;
+      margin-right: 20px;
+    }
+    a{
+      color: rgb(13, 231, 42);
     }
     .LR{
       border-bottom:2px dashed rgb(74, 229, 74);;

@@ -1,15 +1,31 @@
 .rss{
     height: 100%;
+    a{
+        color:orange;
+        text-decoration: none;
+    }
+    h1{
+        color:white;
+    }
 }
 .item{
-        border: 2px rgb(170,170,170) solid;
-        background-color: #ffffff;
-        color: rgb(117, 116, 116);
+    hr{
+        $color: orange;
+        color: $color;
+        border-width: 0 0 8px;
+        border-style: solid;
+        border-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2 1" width="8" height="4"><circle fill="#{$color}" cx="1" cy="0.5" r="0.5"/></svg>') 0 0 100% repeat;
+         width: 216px;
+    }
+        background-color: rgba(57, 58, 58, 0.178);
+        color: rgb(255, 242, 242);
         font-size: 1em;
         margin: 10px;
         border-radius: 10px;
         padding: 20px;
         grid-area:'item';
+        
+        
 .itemHeader{
     text-align: center;
 }
@@ -22,13 +38,11 @@
     'item item item item item'
     'item item item item item';
     }
-    a{
-        color:rgb(229,147,69);
-        text-decoration: none;
-    }
+
     .date{
         font-weight: bold;
         font-size: 0.75em;
+        color:#9a9ba0;
     }
 @media only screen and (max-width: 1300px) {
         .grid-container{
@@ -75,57 +89,4 @@
         justify-content: space-evenly;
         text-align: center;
         color:#9a9ba0;
-    }
-.loading{
-    margin: auto;
-    width:50%;
-    text-align: center;
-    height: 100%;
-}
-.loader{
-        margin: auto;
-        width:50%;
-        position: relative;
-}
-.loader .loading_1{
-        position: relative;
-        width: 100%;
-        height: 10px;
-        border: 1px solid #1ba794;
-        border-radius: 10px;
-        animation: turn 4s linear 1.75s;
-}
-    .loader .loading_1::before{
-        content: "";
-        display: block;
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-color: #1ba794;
-        animation: load 2s cubic-bezier(.17,.67,.83,.67) forwards;
-}
-    .loader .loading_2{
-        position: absolute;
-        width: 100%;
-        top: 15px;
-        color:#1ba794;
-        font-size: 1.5em;
-        text-align: center;
-    }
-    @keyframes load{
-        0%{
-            width: 0%;
-        }
-        100%{
-            width: 100%;
-        }
-    }
-    hr{
-        $color: orange;
-        color: $color;
-        // height: 8px;
-        border-width: 0 0 8px;
-        border-style: solid;
-        border-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2 1" width="8" height="4"><circle fill="#{$color}" cx="1" cy="0.5" r="0.5"/></svg>') 0 0 100% repeat;
-         width: 216px;
     }

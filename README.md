@@ -53,3 +53,5 @@ run the following command in your terminal
 yarn develop
 ```
 * You should now be running project locally! 🎉
+
+![Coronavirus Timeline map](./src/assets/images/timeline_map.jpg)

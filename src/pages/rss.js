@@ -63,7 +63,6 @@ const RssPage = () => {
               </div>
                 <hr/>
                 <p>{item.description}</p>
-                <br/>
                 <p className="date">Publication date: {item.pubDate}</p>
                 </div>
         }) : ""}
