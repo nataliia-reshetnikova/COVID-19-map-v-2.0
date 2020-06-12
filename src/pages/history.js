@@ -49,7 +49,7 @@ const HistoryPage = () => {
             min: 0,
             max: 300,
             inRange: {
-              color: ["white", "green"],
+              color: ["yellow", "red"],
               opacity: [0.5, 0.8],
             },
             dimension: 2,
@@ -61,7 +61,7 @@ const HistoryPage = () => {
             tiles: [
               {
                 urlTemplate:
-                  "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                  "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
               },
             ],
           },
@@ -149,9 +149,9 @@ const HistoryPage = () => {
       </Helmet>
       <div className="historyLegend">
         <span>Color guide for cases number: </span>
-        <span className="orange"> less than 50000 Cases</span>
+        <span className="orange">less than 50000 Cases</span>
         <span className="orangered">50 - 150 Cases</span>
-        <span className="red">> more than 150 Cases</span>
+        <span className="red">more than 150 Cases</span>
       </div>
       <ReactEcharts
         option={chartOptions?chartOptions:{}}

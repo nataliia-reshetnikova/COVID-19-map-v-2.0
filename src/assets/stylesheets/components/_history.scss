@@ -5,22 +5,25 @@
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
+    .orange{
+      border-bottom:2px dashed rgb(255, 187, 0);
+    }
+    .orangered{
+      border-bottom:2px dashed rgb(255, 145, 0);
+    }
+    .red{
+      border-bottom:2px dashed rgb(255, 0, 0);
+    }
+    p {
+      color: gray;
+      font-size: .8em;
+      text-align: center;
+      margin: 0;
   }
-.historyLegend .orange{
-    border-bottom:2px dashed rgb(255, 187, 0);
-}
-.historyLegend .orangered{
-  border-bottom:2px dashed rgb(255, 145, 0);
-}
-.historyLegend .red{
-  border-bottom:2px dashed rgb(255, 0, 0);
-}
-.historyLegend  p {
-    color: gray;
-    font-size: .8em;
-    text-align: center;
-    margin: 0;
-}
+  a{
+    color:gray;
+  }
+  } 
 
 @media only screen and (max-width: 600px) {
   .historyLegend ul{

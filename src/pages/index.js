@@ -171,15 +171,14 @@ const IndexPage = () => {
       </Helmet>
      
       <div className="tracker">
-      <div className="travelDashboard-last-updated">
+      <div className="indexDashboard-last-updated">
       <span>Color guide for Total Cases: </span>
       </div>
-      <div className="travelDashboard-last-updated">
-      
-      <span className="LR">Total Cases less than 1000 Cases</span>
-      <span className="MR">Total Cases More than 1000 and Less than 1000</span>
-      <span className="HR">Total Cases More than 10000 and Less than 10000</span>
-      <span className="EW">Total Cases More than 100000 Cases</span>
+      <div className="indexDashboard-last-updated">
+      <span className="LR">less than 1000 cases</span>
+      <span className="MR">more than 1000 and less than 1000</span>
+      <span className="HR">more than 10,000 and less than 10,000</span>
+      <span className="EW">more than 100,000 Cases</span>
       </div>
   <Map {...mapSettings} />
   <div className="tracker-stats">
@@ -206,11 +205,11 @@ const IndexPage = () => {
     </ul>
   </div>
 
-<div className="tracker-last-updated">
+<div className="indexDashboard-last-updated">
   <p>
   Last Updated: { stats ? friendlyDate(stats?.updated) : '-' }
   </p>
-  <p>Sources: <a href="https://www.travel-advisory.info/" target="_blank">Travel-Advisory.info</a> & <a href="https://corona.lmao.ninja/" target="_blank">Novel COVID API</a></p>
+  <p>Sources: <a href="https://corona.lmao.ninja/" target="_blank">Novel COVID API</a></p>
 </div>
 </div>
     </Layout>
