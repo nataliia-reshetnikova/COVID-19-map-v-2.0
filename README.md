@@ -10,16 +10,16 @@ COVID-19 V 2.0, is a map-based application which has five pages, first page(Case
 Test page, shows total number of test performed by each country, the Case Timeline page shows how and at what speed the COVI-19, has spread around the word. The last page provides  latest news and update to the user.
 
 -Total Cases Page:
-![Coronavirus Total Cases map](./src/assets/images/Cases.png)
+![Coronavirus Total Cases map](./src/assets/images/total.gif)
 
 -Travel Advisory Page:
-![Coronavirus Travel Advisory map](./src/assets/images/TravelScore.JPG)
+![Coronavirus Travel Advisory map](./src/assets/images/travel.gif)
 
 -Test Performed Page:
-![Coronavirus Test Performed map](./src/assets/images/testes.JPG)
+![Coronavirus Test Performed map](./src/assets/images/tests.gif)
 
 -Cases Timeline Page:
-![Coronavirus Timeline map](./src/assets/images/Timeline.JPG)
+![Coronavirus Timeline map](./src/assets/images/timeline.gif)
 
 -Latest News Page:
 ![Coronavirus News Page map](./src/assets/images/News.JPG)

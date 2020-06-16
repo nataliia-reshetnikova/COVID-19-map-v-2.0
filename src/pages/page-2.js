@@ -69,7 +69,6 @@ const SecondPage = () => {
     // let responseGeo;
     let responseTravel;
     try {
-      // responseGeo = await axios.get('https://corona.lmao.ninja/v2/countries');
       responseTravel = await axios.get(
         "https://www.travel-advisory.info/api?fbclid=IwAR3SnvJQ1-dND181hi-pNwL5BH-c41Vg0j8G_FMpqHbPkhWnsbfsJQTfbYQ"
       );
@@ -117,10 +116,10 @@ const SecondPage = () => {
       let additionalClass = "none";
       const { country, updated, cases, score } = properties;
       scoreString = `${score}`;
-      if (score < 2.5) additionalClass = "greenScore";
-      if (score >= 2.5 && score < 3.5) additionalClass = "blueScore";
-      if (score >= 3.5 && score < 4.5) additionalClass = "yellowScore";
-      if (score > 4.5) additionalClass = "redScore";
+      if (score && score < 2.5) additionalClass = "greenScore";
+      if (score && score >= 2.5 && score < 3.5) additionalClass = "blueScore";
+      if (score && score >= 3.5 && score < 4.5) additionalClass = "yellowScore";
+      if (score && score > 4.5) additionalClass = "redScore";
       let colorGuide = colors[additionalClass];
       if (scoreString === "undefined") scoreString = "?";
       if (updated) {
@@ -163,7 +162,6 @@ const SecondPage = () => {
     zoom: DEFAULT_ZOOM,
     mapEffect,
   };
-  console.log(mapSettings);
   return (
     <Layout pageName="home">
       <Helmet>

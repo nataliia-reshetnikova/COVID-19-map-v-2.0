@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header renders correctly 1`] = `
+<header>
+  <div
+    className="container container-content"
+  >
+    <img
+      alt="COVID-19 LOGO"
+      className="virusIcon"
+      src="test-file-stub"
+    />
+    <ul>
+      <li>
+        <a
+          href="/"
+        >
+          Total Cases
+        </a>
+      </li>
+      <li>
+        <a
+          href="/page-2/"
+        >
+          Travel Advisory
+        </a>
+      </li>
+      <li>
+        <a
+          href="/testing/"
+        >
+          Tests Performed
+        </a>
+      </li>
+      <li>
+        <a
+          href="/history/"
+        >
+          Cases Timeline
+        </a>
+      </li>
+      <li>
+        <a
+          href="/rss/"
+        >
+          Latest Advisories
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
+`;
