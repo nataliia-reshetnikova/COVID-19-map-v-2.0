@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import Helmet from "react-helmet";
 import axios from "axios";
 import Layout from "components/Layout";
-import ReactEcharts from "echarts-for-react";
+import Leaflet from "leaflet";
 import leaflet from "echarts-leaflet";
+import ReactEcharts from "echarts-for-react";
+
 
 function setLastUpdated(date, days) {
   let lastUpdated = document.getElementById("lastUpdated");
