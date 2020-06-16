@@ -9,21 +9,20 @@ This application is a developed version of Coronavirus Application Version 1.0, 
 COVID-19 V 2.0, is a map-based application which has five pages, first page(Cases), using  external webservice (travel-advisory) to show updated confirmed COVID-19 cases aslo deaths and recovered cases for each country, the second page(Travel Score) , shows  the Global Travel Risk Map , using external web servises to indicate the risk of travele to the disired country.
 Test page, shows total number of test performed by each country, the Case Timeline page shows how and at what speed the COVI-19, has spread around the word. The last page provides  latest news and update to the user.
 
--Total Cases Page:
+### Total Cases Page:
 ![Coronavirus Total Cases map](./src/assets/images/total.gif)
 
--Travel Advisory Page:
+### Travel Advisory Page:
 ![Coronavirus Travel Advisory map](./src/assets/images/travel.gif)
 
--Test Performed Page:
+### Test Performed Page:
 ![Coronavirus Test Performed map](./src/assets/images/tests.gif)
 
--Cases Timeline Page:
+### Cases Timeline Page:
 ![Coronavirus Timeline map](./src/assets/images/timeline.gif)
 
--Latest News Page:
+### Latest Advisories Page:
 ![Coronavirus News Page map](./src/assets/images/News.JPG)
-
 
 * [Yarn](https://yarnpkg.com/en/)
 * [Gatsby](https://www.gatsbyjs.org/)
@@ -32,6 +31,9 @@ Test page, shows total number of test performed by each country, the Case Timeli
 * [Resolve Src](https://github.com/alampros/gatsby-plugin-resolve-src)
 * [Leaflet](https://leafletjs.com/)
 * [React Leaflet](https://react-leaflet.js.org)
+* [JEST](https://jestjs.io/)
+* [Echarts](https://echarts.apache.org/en/index.html)
+* [Axios](https://github.com/axios/axios)
 
 ## 🚀🚀🚀 Getting Started
 
