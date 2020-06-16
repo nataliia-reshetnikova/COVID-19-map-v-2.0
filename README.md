@@ -58,7 +58,7 @@ yarn global add gatsby-cli
 ```
 * Inside the directory of your choice, clone the project:
 ```
-git clone https://github.com/nataliereshetnikova/corona-map.git
+git clone https://github.com/nataliereshetnikova/COVID-19-map-v-2.0.git
 ```
 * Install all the packages from json file:
 ```
@@ -70,5 +70,3 @@ run the following command in your terminal
 yarn develop
 ```
 * You should now be running project locally! 🎉
-
-![Coronavirus Timeline map](./src/assets/images/timeline_map.jpg)
