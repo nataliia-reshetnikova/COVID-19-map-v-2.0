@@ -172,7 +172,7 @@ const IndexPage = () => {
      
       <div className="tracker">
       <div className="indexDashboard-last-updated">
-      <span>Color guide for Total Cases: </span>
+      <span>Color guide for total cases: </span>
       </div>
       <div className="indexDashboard-last-updated">
       <span className="LR">less than 1000 cases</span>

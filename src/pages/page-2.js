@@ -170,7 +170,7 @@ const SecondPage = () => {
 
       <div className="tracker">
       <div className="travelDashboard-last-updated">
-      <span>Color guide for Travel Warning score: </span>
+      <span>Color guide for travel advisory score: </span>
       </div>
       <div className="travelDashboard-last-updated">
         
