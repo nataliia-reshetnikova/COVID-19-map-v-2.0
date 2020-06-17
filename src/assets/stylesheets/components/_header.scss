@@ -37,8 +37,13 @@ header {
     font-weight: bold;
     margin: 0;
   }
+  .virusIcon{
+    height: 100%;
+  }
+  @media only screen and (max-width: 600px) {
+    .virusIcon{
+      width: 50%;
+    }
+  }
+}
 
-}
-.virusIcon{
-  height: 100%;
-}
