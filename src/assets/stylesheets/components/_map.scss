@@ -1,6 +1,6 @@
 .map {
   width:100vw;
-  height: 63vh;
+  height: 70vh;
   position: relative;
 
   &,
@@ -142,6 +142,8 @@
 
   display: none;
   position: absolute;
+  // left: auto;
+  // bottom: auto;
   bottom: 100%;
   width: 16em;
   font-size: 1.4em;

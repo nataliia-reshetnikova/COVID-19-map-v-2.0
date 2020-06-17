@@ -23,8 +23,6 @@ const IndexPage = () => {
     api: 'all'
   });
   
-  console.log('stats', stats);
-  
   const hasCountries = Array.isArray(countries) && countries.length > 0;
   
   const dashboardStats = [
@@ -147,8 +145,9 @@ const IndexPage = () => {
           className:'icon',
           html
         }),
+        direction:'auto',
         riseOnHover:true
-      });
+      })
   } 
     //for custom markers as a second parameter provide options
     const geoJsonLayers = new Leaflet.GeoJSON(geoJson, {
@@ -171,9 +170,6 @@ const IndexPage = () => {
       </Helmet>
      
       <div className="tracker">
-      <div className="indexDashboard-last-updated">
-      <span>Color guide for total cases: </span>
-      </div>
       <div className="indexDashboard-last-updated">
       <span className="LR">less than 1000 cases</span>
       <span className="MR">more than 1000 and less than 1000</span>

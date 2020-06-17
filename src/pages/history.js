@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Helmet from "react-helmet";
 import axios from "axios";
 import Layout from "components/Layout";
-import Leaflet from "leaflet";
 import leaflet from "echarts-leaflet";
 import ReactEcharts from "echarts-for-react";
 
@@ -74,33 +73,33 @@ const HistoryPage = () => {
   const apiURL =
     "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv";
   
-    useEffect(async()=>{
-    const responseHistory = await axios.get(apiURL);
-    const HistoryData = responseHistory.data;
-    const hasHistoryData = HistoryData.length > 0;
-    if (!hasHistoryData) return;
-    var lines = HistoryData.split("\n");
+    useEffect(()=>{
+      async function fetchData(){
+        const responseHistory = await axios.get(apiURL);
+        const HistoryData = responseHistory.data;
+        const hasHistoryData = HistoryData.length > 0;
+        if (!hasHistoryData) return;
+        var lines = HistoryData.split("\n");
 
-    var result = [];
-    for (var i = 1; i < lines.length; ++i) {
-      var columns = lines[i].split(",");
-
-      for (var j = 4; j < columns.length; ++j) {
-        var value = [
-          columns[3],
-          columns[2],
-          columns[j],
-          columns[0] + " " + columns[1],
-        ];
-        var id = j - 4;
-        if (result[id]) {
-          result[id].push(value);
-        } else {
-          result[id] = [value];
-        }
+        var result = [];
+        for (var i = 1; i < lines.length; ++i) {
+          var columns = lines[i].split(",");
+    
+          for (var j = 4; j < columns.length; ++j) {
+            var value = [
+              columns[3],
+              columns[2],
+              columns[j],
+              columns[0] + " " + columns[1],
+            ];
+            var id = j - 4;
+            if (result[id]) {
+              result[id].push(value);
+            } else {
+              result[id] = [value];
+            }
+          }
       }
-    }
-
     //set last updated data:
     setLastUpdated(new Date(2020, 0, 22), result.length - 1);
 
@@ -142,6 +141,8 @@ const HistoryPage = () => {
     echartsOption.timeline = timeline;
     echartsOption.options = options;
     setOptions(echartsOption);
+    }
+    fetchData();
   },[]);
 
   return (
@@ -150,14 +151,13 @@ const HistoryPage = () => {
         <title>Cases Timeline</title>
       </Helmet>
       <div className="historyLegend">
-        <span>Color guide for cases number: </span>
         <span className="orange">less than 50000 Cases</span>
         <span className="orangered">50 - 150 Cases</span>
         <span className="red">more than 150 Cases</span>
       </div>
       <ReactEcharts
         option={chartOptions?chartOptions:{}}
-        style={{ height: "82vh", width: "100%" }}
+        style={{ height: "80vh", width: "100%" }}
       />
       <div className="historyLegend">
         <p>

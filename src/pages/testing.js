@@ -162,9 +162,6 @@ const TestingPage = () => {
 
       <div className="tracker">
       <div className="test-last-updated">
-      <span>Color guide for total number of test performed: </span>
-      </div>
-      <div className="test-last-updated">
       <span className="l3">Less than 3% of population</span>
       <span className="t35">More than 3% and less than 5% of population</span>
       <span className="t510">More than 5% and Less than 10% of population</span>

@@ -1,7 +1,7 @@
 .historyLegend {
     color: gray;
     background-color: rgb(38,38,38);
-    padding: .8em 1em;
+    padding: .8em 0.8em;
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
@@ -28,6 +28,5 @@
 @media only screen and (max-width: 600px) {
   .historyLegend ul{
       grid-template-columns: 1fr;
-     
   }
 }
