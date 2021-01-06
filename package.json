@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "author": "Natalie & Hamidreza",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "echarts": "^4.8.0",
     "echarts-for-react": "^2.0.16",
     "echarts-leaflet": "^1.1.0",
